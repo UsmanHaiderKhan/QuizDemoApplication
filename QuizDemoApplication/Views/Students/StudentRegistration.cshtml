@@ -1,0 +1,74 @@
+﻿@model QuizDemoApplication.Models.SessionModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/Content/images/favicon.png">
+    <title>Quiz DEmo Application</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/Content/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="/Content/css/helper.css" rel="stylesheet">
+    <link href="/Content/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="main-wrapper">
+        <div class="unix-login">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4">
+                        <div class="login-content card">
+                            <div class="login-form">
+                                <h4>Register</h4>
+                                @using (Html.BeginForm("StudentRegistration", "Students", FormMethod.Post, new { }))
+                                {
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.TestId)
+                                        @Html.DropDownListFor(x => x.TestId, new SelectList(ViewBag.Types, "Id", "Name", Model.TestId), "-- Select Test Type --", new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.UserName)
+                                        @Html.TextBoxFor(m => m.UserName, Model.UserName, new { @class = "form-control", placeholder = "User Name ", type = "text" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.Email)
+                                        @Html.TextBoxFor(m => m.Email, Model.Email, new { @class = "form-control", type = "email", placeholder = "User Email " })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.PhonNo)
+                                        @Html.TextBoxFor(m => m.PhonNo, Model.PhonNo, new { @class = "form-control", type = "number", placeholder = "User PhonNo " })
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Agree the terms and Condition's
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+                                    <div class="register-link m-t-15 text-center">
+                                        <p>Already have account ? <a href="#"> Sign in</a></p>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/Content/js/lib/jquery/jquery.min.js"></script>
+    <!-- Bootstra/Content/p tether Core JavaScript -->
+    <script src="/Content/js/lib/bootstrap/js/popper.min.js"></script>
+    <script src="/Content/js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscro/Content/llbar scrollbar JavaScript -->
+    <script src="/Content/js/jquery.slimscroll.js"></script>
+    <!--Menu side/Content/bar -->
+    <script src="/Content/js/sidebarmenu.js"></script>
+    <!--stickey k/Content/it -->
+    <script src="/Content/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom Ja/Content/vaScript -->
+    <script src="/Content/js/custom.min.js"></script>
+</body>
+</html>
