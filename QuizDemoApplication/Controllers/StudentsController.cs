@@ -37,7 +37,7 @@ namespace QuizDemoApplication.Controllers
                 {
                     ViewBag.TestName = test.Name;
                     ViewBag.TestDescription = test.Description;
-                    ViewBag.QuestionCount = test.TestQuestion;
+                    ViewBag.QuestionCount = test.TestQuestion.Count;
                     ViewBag.TestDuration = test.DurationInMint;
 
                 }
