@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{96959C3F-BAF6-483B-802A-21088CC13FC5}</ProjectGuid>
+    <ProjectGuid>{4EA82FBC-EC49-42C1-BD5A-43ADE442CC59}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QuizDemoClasses</RootNamespace>
@@ -31,13 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>F:\MyWork\Working Projects\UniversalShopingApp\UniversalShopingApp\bin\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>F:\MyWork\Working Projects\UniversalShopingApp\UniversalShopingApp\bin\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,18 +51,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuizDemoContext.cs" />
     <Compile Include="QuizManagement\Choice.cs" />
-    <Compile Include="QuizManagement\QuestionCategory.cs" />
-    <Compile Include="QuizManagement\TestPaper.cs" />
     <Compile Include="QuizManagement\Question.cs" />
+    <Compile Include="QuizManagement\QuestionCategory.cs" />
     <Compile Include="QuizManagement\QuestionDuration.cs" />
     <Compile Include="QuizManagement\Test.cs" />
+    <Compile Include="QuizManagement\TestPaper.cs" />
     <Compile Include="QuizManagement\TestQuestion.cs" />
     <Compile Include="UserManagement\Registration.cs" />
     <Compile Include="UserManagement\Student.cs" />
     <Compile Include="UserManagement\UserHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
