@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="QuizDemoClasses.QuizManagement.Choice">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <AssociationLine Name="TestPaper" Type="QuizDemoClasses.QuizManagement.TestPaper" ManuallyRouted="true">
+      <Path>
+        <Point X="4.5" Y="2.08" />
+        <Point X="4.688" Y="2.08" />
+        <Point X="4.688" Y="3.208" />
+        <Point X="6.417" Y="3.208" Type="JumpStart" />
+        <Point X="6.583" Y="3.208" Type="JumpEnd" />
+        <Point X="11.292" Y="3.208" Type="JumpStart" />
+        <Point X="11.521" Y="3.208" Type="JumpEnd" />
+        <Point X="13.5" Y="3.208" />
+        <Point X="13.5" Y="3.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAAEAAAAAAAQAAAAAAEAAAAAAQAAAA=</HashCode>
+      <FileName>QuizManagement\Choice.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TestPaper" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="QuizDemoClasses.QuizManagement.Question">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAEAAAggAAEAAAAAAACAAACAAAAAAAAAEAQAA=</HashCode>
+      <FileName>QuizManagement\Question.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TestQuestion" />
+      <Property Name="QuestionCategory" />
+      <Property Name="Choice" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="QuizDemoClasses.QuizManagement.QuestionCategory">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAACAA=</HashCode>
+      <FileName>QuizManagement\QuestionCategory.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Question" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="QuizDemoClasses.QuizManagement.QuestionDuration">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAIAAAIAAAAAAAAAAAAAAACAAAAAEQEg=</HashCode>
+      <FileName>QuizManagement\QuestionDuration.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TestQuestion" />
+      <Property Name="Registration" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="QuizDemoClasses.QuizManagement.Test">
+    <Position X="9.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAEAAAAAQAAAAAAAAAAAAAAAAERAA=</HashCode>
+      <FileName>QuizManagement\Test.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TestQuestion" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="QuizDemoClasses.QuizManagement.TestPaper">
+    <Position X="12.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAAAAAAAAAAAQAACAAAACAAAgIEQAA=</HashCode>
+      <FileName>QuizManagement\TestPaper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuizDemoClasses.QuizManagement.TestQuestion">
+    <Position X="6.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAEgAEAAAAABAAAAAEAAAACAQAAAA=</HashCode>
+      <FileName>QuizManagement\TestQuestion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="QuestionDuration" />
+      <Property Name="TestPaper" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="QuizDemoClasses.UserManagement.Registration">
+    <Position X="9.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAQCAAAAAAAAAEAAAAARAAAAAAAAAACAQDAAA=</HashCode>
+      <FileName>UserManagement\Registration.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TestPaper" />
+      <Property Name="QuestionDuration" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="QuizDemoClasses.UserManagement.Student">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAAAAQCAAAAAAAAAAAASAAAAAAAAAAAIAAAAEAAA=</HashCode>
+      <FileName>UserManagement\Student.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Registration" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
