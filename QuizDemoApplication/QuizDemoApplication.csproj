@@ -43,11 +43,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>F:\MyWork\Working Projects\UniversalShopingApp\UniversalShopingApp\bin\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>F:\MyWork\Working Projects\UniversalShopingApp\UniversalShopingApp\bin\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
@@ -857,7 +857,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QuizDemoClasses\QuizDemoClasses.csproj">
-      <Project>{96959c3f-baf6-483b-802a-21088cc13fc5}</Project>
+      <Project>{4ea82fbc-ec49-42c1-bd5a-43ade442cc59}</Project>
       <Name>QuizDemoClasses</Name>
     </ProjectReference>
   </ItemGroup>
