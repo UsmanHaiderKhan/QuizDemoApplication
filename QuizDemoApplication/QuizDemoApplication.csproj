@@ -716,6 +716,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\OptionsModel.cs" />
+    <Compile Include="Models\QuestionModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -845,6 +847,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Students\StudentRegistration.cshtml" />
     <Content Include="Views\Students\Instruction.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Students\EvalutionPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
