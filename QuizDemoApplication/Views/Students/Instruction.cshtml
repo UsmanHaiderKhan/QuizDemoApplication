@@ -1,7 +1,27 @@
-﻿
+﻿@model QuizDemoApplication.Models.SessionModel
 @{
     ViewBag.Title = "Instruction";
 }
-
 <h2>Instruction</h2>
+<div class="row page-wrapper" style="padding: 20px">
+    <div class="col-lg-6">
+        <h3>@ViewBag.TestName</h3>
+        <p>@ViewBag.TestDescription</p>
+    </div>
+    <div class="col-lg-6">
+        <h3>Test Duration :@(ViewBag.TestDuration) minutes</h3>
+        <p>Total Question:@ViewBag.QuestionCount</p>
+    </div>
+    @if (Model != null)
+    {
+        using (Html.BeginForm("Register", "students", FormMethod.Post, new { id = "forRegister" }))
+        {
+            @Html.HiddenFor(m => Model.TestId)
+            @Html.HiddenFor(m => Model.UserName)
+            @Html.HiddenFor(m => Model.PhonNo)
+            @Html.HiddenFor(m => Model.Email)
 
+            <a href="javascript:void(0)" onclick="getElementbyId('forRegister').submit();">Register and Start</a>
+        }
+    }
+</div>
