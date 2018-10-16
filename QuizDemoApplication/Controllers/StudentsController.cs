@@ -153,7 +153,7 @@ namespace QuizDemoApplication.Controllers
                     Question = x.Question.Questino1,
                     Point = x.Question.Points,
                     TestId = x.TestId,
-                    // TestName = x.Test.Name,
+                    TestName = x.Test.Name,
                     Options = x.Question.Choices.Where(y => y.IsActive == true).Select(y => new OptionsModel()
                     {
                         ChoiceId = y.Id,
