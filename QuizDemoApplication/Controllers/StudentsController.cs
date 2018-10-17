@@ -103,7 +103,7 @@ namespace QuizDemoApplication.Controllers
                         Token = Guid.NewGuid(),
                         TokenExpireTime = DateTime.UtcNow.AddMinutes(test.DurationInMint)
                     };
-                    // _user.Registrations.Add(newregistration);
+                    _user.Registrations.Add(newregistration);
                     _db.Registrations.Add(newregistration);
                     _db.SaveChanges();
                     this.Session["Token"] = newregistration.Token;
