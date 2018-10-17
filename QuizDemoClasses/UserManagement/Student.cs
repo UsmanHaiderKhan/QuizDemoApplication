@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace QuizDemoClasses.UserManagement
 {
@@ -10,12 +11,12 @@ namespace QuizDemoClasses.UserManagement
         public DateTime EntryDate { get; set; }
         public string Email { get; set; }
         public string PhonNo { get; set; }
-        //  public List<Registration> Registrations { get; set; }
+        public List<Registration> Registrations { get; set; }
         public int PassHash { get; set; }
 
-        //public Student()
-        //{
-        //    Registrations = new List<Registration>();
-        //}
+        public Student()
+        {
+            Registrations = new List<Registration>();
+        }
     }
 }
