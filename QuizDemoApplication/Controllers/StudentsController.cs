@@ -112,7 +112,7 @@ namespace QuizDemoApplication.Controllers
                 }
             }
 
-            return View("EvalutionPage", new { token = Session["Token"] });
+            return RedirectToAction("EvalutionPage", new { token = Session["Token"] });
         }
 
         public ActionResult EvalutionPage(Guid token, int? qno)
@@ -162,6 +162,8 @@ namespace QuizDemoApplication.Controllers
                     }).ToList()
 
                 }).FirstOrDefault();
+                _model.TotalQuestionInSet = _db.TestQuestions
+                    .Where(x => x.Question.IsActive == true && x.TestId == registration.TestId).Count();
                 return View(_model);
             }
 
