@@ -162,6 +162,24 @@ namespace QuizDemoApplication.Controllers
                     }).ToList()
 
                 }).FirstOrDefault();
+
+
+
+
+
+                var savedAnswer = _db.TestPapers.Where(x =>
+                    x.TestQuestionId == testQuestionId && x.RegistrartionId == registration.Id &&
+                    x.Choice.IsActive == true)
+                    .Select(x => new { x.ChoiceId, x.Answer }).ToList();
+
+                foreach (var saveAns in savedAnswer)
+                {
+                    _model.Options.FirstOrDefault(x => x.ChoiceId == saveAns.ChoiceId).Answer = saveAns.Answer;
+                }
+
+
+
+
                 _model.TotalQuestionInSet = _db.TestQuestions
                     .Where(x => x.Question.IsActive == true && x.TestId == registration.TestId).Count();
                 return View(_model);
@@ -171,9 +189,105 @@ namespace QuizDemoApplication.Controllers
             {
                 return View("Error");
             }
-            return View();
-
         }
+        [HttpPost]
 
+        public ActionResult PostAnswer(AnswerModel choices)
+        {
+            //verify that is Register Allow to check the question
+            var registration = _db.Registrations.FirstOrDefault(x => x.Token.Equals(choices.Token));
+            if (registration == null)
+            {
+                TempData["message"] = "Token is Invalid";
+                return RedirectToAction("StudentRegistration");
+            }
+
+            if (registration.TokenExpireTime < DateTime.UtcNow)
+            {
+                TempData["message"] = "Your Test Duration Time has been expired..." + registration.TokenExpireTime.ToString();
+                return RedirectToAction("StudentRegistration");
+            }
+
+            var testQuestionInfo = _db.TestQuestions
+                .Where(x => x.TestId == registration.TestId && x.QuestionNumber == choices.QuestionId)
+                .Select(x => new
+                {
+                    TQId = x.Id,
+                    QT = x.Question.QuestionType,
+                    QId = x.Id,
+                    POINT = x.Question.Points
+
+
+
+                }).FirstOrDefault();
+
+            if (testQuestionInfo != null)
+            {
+                if (choices.ChoiceModels.Count > 1)
+                {
+                    var allValueofChoice =
+                    (
+                        from a in _db.Choices.Where(x => x.IsActive)
+                        join b in choices.UserSelectedId on a.Id equals b
+                        select new { a.Id, Points = (decimal)a.Points }).AsEnumerable()
+                        .Select(x => new TestPaper()
+                        {
+                            RegistrartionId = registration.Id,
+                            TestQuestionId = testQuestionInfo.QId,
+                            ChoiceId = x.Id,
+                            Answer = "CHECKED",
+                            MarkScored = Math.Floor((testQuestionInfo.POINT / 100.00M) * x.Points),
+
+
+
+                        }).ToList();
+
+                    _db.TestPapers.AddRange(allValueofChoice);
+
+                }
+                else
+                {
+                    _db.TestPapers.Add(new TestPaper()
+                    {
+                        RegistrartionId = registration.Id,
+                        TestQuestionId = testQuestionInfo.QId,
+                        ChoiceId = choices.ChoiceModels.FirstOrDefault().ChoiceId,
+                        MarkScored = 1,
+                        Answer = choices.Answer
+                    });
+                }
+
+                _db.SaveChanges();
+            }
+
+            var nextQuestionNo = 1;
+            if (choices.Direction.Equals("forward", StringComparison.CurrentCultureIgnoreCase))
+            {
+                nextQuestionNo = _db.TestQuestions.Where(x => x.TestId == choices.TestId
+                                                              && x.QuestionNumber > choices.QuestionId)
+                    .OrderBy(x => x.QuestionNumber).Take(1).Select(x => x.QuestionNumber).FirstOrDefault();
+            }
+            else
+            {
+
+                nextQuestionNo = _db.TestQuestions.Where(x => x.TestId == choices.TestId
+                                                              && x.QuestionNumber > choices.QuestionId)
+                    .OrderByDescending(x => x.QuestionNumber).Take(1).Select(x => x.QuestionNumber).FirstOrDefault();
+            }
+
+            if (nextQuestionNo < 1)
+            {
+                nextQuestionNo = 1;
+
+            }
+
+
+
+            return RedirectToAction("EvalutionPage", new
+            {
+                token = Session["TOKEN"],
+                qno = nextQuestionNo
+            });
+        }
     }
 }
