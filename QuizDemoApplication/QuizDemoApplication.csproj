@@ -851,6 +851,7 @@
     <Content Include="Views\Students\Instruction.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Students\EvalutionPage.cshtml" />
+    <Content Include="Views\Students\PostAnswer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
