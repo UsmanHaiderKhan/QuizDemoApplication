@@ -15,6 +15,25 @@
         <h3>Test Duration :@(ViewBag.TestDuration) minutes</h3>
         <p>Total Question:@ViewBag.QuestionCount</p>
     </div>
+    <div class="row">
+        <div>
+            <p>
+                Here is example of a quiz directions and tips page that I can easily refer
+                students to if they are struggling with quizzes.
+                It also provides instructions on how to deal with system problems.
+            </p>
+            <p>
+                <span style="font-family: fantasy; color: orange">Problem Questions or other Quiz Issues</span>
+                If you feel that a particular quiz question is faulty (confusing, an incorrect answer is listed as the correct answer etc.) you should contact me immediately. Remember, in multiple choice quizzes several answers may be partially or broadly correct, but only one answer is the BEST one available. Please note each quiz question has a page number where the question’s answer is located in the text that is visible after the quiz is taken and recorded. In order to address any issues, students should follow the following steps.
+
+                Note the question code (eg. C3.24) and not the questions number (eg. 7) as the questions are randomized.
+                Copy and Paste the entire question and answer choices into an email or take a screen shot.
+                Locate the answer you think is correct (or also correct) in the text and clearly state it as well as giving the location where the instructor can find it in the text.
+                Clearly and concisely give that rationale for why the assigned answer choice is incorrect and your selected answer choice is a better or equally good answer.
+                Email this information to the instructor. A confirmation email will be returned and a ruling will be forthcoming.
+            </p>
+        </div>
+    </div>
     @if (Model != null)
     {
         using (Html.BeginForm("Register", "students", FormMethod.Post, new { @id = "forRegister" }))
