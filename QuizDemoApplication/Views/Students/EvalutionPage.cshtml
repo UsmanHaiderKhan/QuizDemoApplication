@@ -4,6 +4,11 @@
 
     ViewBag.Title = "EvalutionPage";
     var totalQuestino = Model.TotalQuestionInSet;
+    int count = 0;
+    int srno = 1;
+
+    var endTime = DateTime.UtcNow.AddSeconds(65);
+    var remainnigTime = TimeSpan.FromTicks(endTime.Ticks - DateTime.UtcNow.Ticks).TotalSeconds.ToString("#");
 }
 <h2>EvalutionPage</h2>
 @Html.Raw(Model.Question)
@@ -86,6 +91,40 @@
     function saveBackWard(sender) {
         $('#Direction').val('backward');
         document.getElementById('form').submit();
+
+
+
+        var secRem =@remainnigTime;
+        var seccounter = secRem % 60;
+
+        function formateNumber(number) {
+            if (number < 10) return '0' + number;
+            else return '' + number;
+        }
+        function StartTicks() {
+            document.getElementById('secRemaninning').innerText = formateNumber(seccounter);
+            document.getElementById('minRemainning').innerText = formateNumber(parseInt(secRem / 60));
+            var _tick = setInterval(function () {
+                if (secRem > 0) {
+
+
+                    secRem = secRem - 1;
+                    seccounter = seccounter - 1;
+                    document.getElementById('secRemaninning').innerText = formateNumber(seccounter);
+                    document.getElementById('minRemainning').innerText = formateNumber(parseInt(secRem / 60));
+
+                    if (seccounter == 0) {
+                        seccounter = 60;
+                    }
+                } else {
+                    alert("Your Test Time Has Expire...!");
+                    clearInterval(_tick);
+                }
+
+            }, 1000);
+        }
+
+        StartTicks();
 
     }
 
