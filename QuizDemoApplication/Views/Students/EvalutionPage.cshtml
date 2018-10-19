@@ -6,8 +6,8 @@
     var totalQuestino = Model.TotalQuestionInSet;
     int count = 0;
     int srno = 1;
-
-    var endTime = DateTime.UtcNow.AddSeconds(65);
+    // DateTime.UtcNow.AddSeconds(65);
+    var endTime = ((DateTime)ViewBag.Expire);
     var remainnigTime = TimeSpan.FromTicks(endTime.Ticks - DateTime.UtcNow.Ticks).TotalSeconds.ToString("#");
 }
 <h2>EvalutionPage</h2>
