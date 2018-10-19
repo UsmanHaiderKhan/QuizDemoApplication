@@ -182,6 +182,7 @@ namespace QuizDemoApplication.Controllers
 
                 _model.TotalQuestionInSet = _db.TestQuestions
                     .Where(x => x.Question.IsActive == true && x.TestId == registration.TestId).Count();
+                ViewBag.Expire = registration.TokenExpireTime;
                 return View(_model);
             }
 
