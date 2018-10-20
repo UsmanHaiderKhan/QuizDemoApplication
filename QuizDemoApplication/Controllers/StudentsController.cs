@@ -64,8 +64,7 @@ namespace QuizDemoApplication.Controllers
 
             Student _user = _db.Students.FirstOrDefault(x => x.Name.Equals(model.UserName, StringComparison.CurrentCultureIgnoreCase)
                 && ((string.IsNullOrEmpty(model.Email) && string.IsNullOrEmpty(x.Email)) || (x.Email == model.Email))
-                && ((string.IsNullOrEmpty(model.PhonNo) && string.IsNullOrEmpty(x.PhonNo)) ||
-                    (x.PhonNo == model.PhonNo)));
+                && ((string.IsNullOrEmpty(model.PhonNo) && string.IsNullOrEmpty(x.PhonNo)) || (x.PhonNo == model.PhonNo)));
 
             if (_user != null)
             {
@@ -82,8 +81,7 @@ namespace QuizDemoApplication.Controllers
 
             }
 
-            Registration registration = _db.Registrations
-                .FirstOrDefault(x => x.StudentId == _user.Id && x.TestId == model.TestId && x.TokenExpireTime > DateTime.UtcNow);
+            Registration registration = _db.Registrations.FirstOrDefault(x => x.StudentId == _user.Id && x.TestId == model.TestId && x.TokenExpireTime > DateTime.UtcNow);
 
             if (registration != null)
             {
@@ -180,8 +178,7 @@ namespace QuizDemoApplication.Controllers
 
 
 
-                _model.TotalQuestionInSet = _db.TestQuestions
-                    .Where(x => x.Question.IsActive == true && x.TestId == registration.TestId).Count();
+                _model.TotalQuestionInSet = _db.TestQuestions.Count(x => x.Question.IsActive == true && x.TestId == registration.TestId);
                 ViewBag.Expire = registration.TokenExpireTime;
                 return View(_model);
             }
@@ -286,7 +283,7 @@ namespace QuizDemoApplication.Controllers
 
             return RedirectToAction("EvalutionPage", new
             {
-                token = Session["TOKEN"],
+                token = Session["Token"],
                 qno = nextQuestionNo
             });
         }
