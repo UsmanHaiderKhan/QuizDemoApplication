@@ -58,15 +58,32 @@
                         @for (int i = 0; i < Model.Options.Count; i++)
                         {
                             <li>
-                                <input type="hidden" name="UserChoices[@i].choiceId" value="@(Model.Options[i].ChoiceId)" />
-                                <input name="UserChoices[@i].IsChecked" type="radio" @(!string.IsNullOrEmpty(Model.Options[i].Answer) ?) />@(Model.Options[i].Lable)
+                                <input type="hidden" name="UserChoices[@i].choiceId" value="@Model.Options[i].ChoiceId" />
+                                <input type="radio" name="UserChoices[@i].IsChecked" @(!string.IsNullOrEmpty(Model.Options[i].Answer)) /> @Model.Options[i].Lable
+                                <span class="code">@Html.Raw(Model.Options[i].Lable.Replace("[", "&gt;").Replace("]", "&gt;"))</span>
+                            </li>
+
+                        }
+                    </ul>
+                    <input type="hidden" name="Answer" value="no data" />
+                    break;
+                case "MULTIPLE":
+                    <div class="prelude">
+                        Chosse All the Correct Answer
+                    </div>
+                    <ul class="js_choices">
+                        @for (int i = 0; i < Model.Options.Count; i++)
+                        {
+                            <li>
+                                <input type="hidden" name="UserChoices[@i].choiceId" value="@Model.Options[i].ChoiceId" />
+                                <input type="radio" name="UserChoices[@i].IsChecked" @(!string.IsNullOrEmpty(Model.Options[i].Answer)) /> @Model.Options[i].Lable
                                 <span class="code">@Html.Raw(Model.Options[i].Lable.Replace("[", "&gt;").Replace("]", "&gt;"))</span>
                                 <br />
                             </li>
 
                         }
                     </ul>
-                    <input type="hidden" name="Answer" />
+                    <input type="hidden" name="Answer" value="no data" />
                     break;
                 case "TEXT":
                     <div>Write Your Thoughts</div>
@@ -129,46 +146,3 @@
     }
 
 </script>
-@*<div class="row">
-
-
-        <div class="row">
-        <p>
-            <br />
-            @Html.Raw(Model.Question ?? "")
-        </p>
-    </div>
-    <br />
-    <br />
-
-
-
-
-            @for (int i = 0; i < Model.Options.Count; i++)
-            {
-                @Html.RadioButtonFor(x => Model.Options[i], "checked")
-                ;
-            }
-                @if (Model.QuestionType == "Radio")
-                {
-                    for (int i = 0; i < Model.Options.Count; i++)
-                    {
-                    <input type="hidden" name="UserChoices[@i].choiceId" value="@(Model.Options[i].ChoiceId)"/>
-                    <input name="UserChoices[@i].IsChecked" type="radio"/>@(Model.Options[i].Lable)
-                    <br/>
-                        }
-                }
-            else if (Model.QuestionType == "Multiple")
-            {
-                foreach (var optionsModel in Model.Options)
-                {
-                    <input type="checkbox"/>@(optionsModel.Lable)
-                    <br/>
-                }
-            }
-            else if (Model.QuestionType == "TEXT")
-            {
-                <textarea>This is a Text Area</textarea>
-            }
-            }
-        </div>*@
